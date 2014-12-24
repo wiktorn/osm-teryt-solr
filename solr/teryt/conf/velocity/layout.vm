@@ -1,1 +1,21 @@
-      #parse("tabs.vm")
+#**
+ *  Overall HTML page layout
+ *#
+
+<html>
+<head>
+  #parse("head.vm")
+</head>
+  <body>
+    <div id="header">
+      #parse("header.vm")
+    </div>
+    <div id="content">
+      $content
+    </div>
+    <div id="footer">
+      #parse("footer.vm")
+    </div>
+  </body>
+</html>
+
