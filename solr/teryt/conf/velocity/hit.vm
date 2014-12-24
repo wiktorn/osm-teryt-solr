@@ -7,7 +7,7 @@
 #set($docId = $doc.getFieldValue('id'))
 ## usually within <div class="row">
 <div class="result-document">
-#if($doc.getFieldValue('typ')) == 'terc')
+#if($doc.getFieldValue('typ') == 'terc')
     #resval('Nazwa', $doc.getFieldValue('value'))
     #resval('TERC', $doc.getFieldValue('terc'))
     #resval('Rodzaj', $doc.getFieldValue('rodzaj'))
