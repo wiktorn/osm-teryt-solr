@@ -1,20 +1,22 @@
 #**
  *  Overall HTML page layout
  *#
-
-<html>
+<!DOCTYPE html>
+<html lang="pl">
 <head>
   #parse("head.vm")
 </head>
   <body>
-    <div id="header">
-      #parse("header.vm")
-    </div>
-    <div id="content">
-      $content
-    </div>
-    <div id="footer">
-      #parse("footer.vm")
+    <div class="container-fluid">
+        <div id="header" class="row">
+          #parse("header.vm")
+        </div>
+        <div id="content" class="row">
+          $content
+        </div>
+        <div id="footer" class="row">
+          #parse("footer.vm")
+        </div>
     </div>
   </body>
 </html>

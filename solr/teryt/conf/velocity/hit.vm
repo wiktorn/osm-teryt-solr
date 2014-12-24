@@ -5,21 +5,25 @@
  *#
 
 #set($docId = $doc.getFieldValue('id'))
-
+## usually within <div class="row">
 <div class="result-document">
+#if($doc.getFieldValue('typ')) == 'terc')
+    #resval('Nazwa', $doc.getFieldValue('value')
+    #resval('TERC', $doc.getFieldValue('terc')
+    #resval('Rodzaj', $doc.getFieldValue('rodzaj')
+    ## TODO:linki
+#elseif ($doc.getFieldValue('typ') == 'simc')
+    #resval('Nazwa', $doc.getFieldValue('value')
+    #resval('Rodzaj', $doc.getFieldValue('rodzaj')
+    #resval('Województwo', $doc.getFieldValue('wojewodztwo')
+    #resval('Powiat', $doc.getFieldValue('powiat')
+    #resval('Gmina', $doc.getFieldValue('gmina')
 
-  ## Has a "name" field ?
-  #if($doc.getFieldValue('name'))
-    #parse("product_doc.vm")
-
-  ## Has a "compName_s" field ?
-  #elseif($doc.getFieldValue('compName_s'))
-    #parse("join_doc.vm")
-
-  ## Fallback to richtext_doc
-  #else
-    #parse("richtext_doc.vm")
-
-  #end
-
+#elseif ($doc.getFieldValue('typ') == 'ulic')
+    #resval('Nazwa ulicy', $doc.getFieldValue('value')
+    ##resval('SYMUL', $doc.getFieldValue('symul')
+    ## TODO:linki
+#else
+    Unkown typ: $doc.getFieldValue('typ')
+#end
 </div>

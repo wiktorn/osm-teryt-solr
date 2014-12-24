@@ -4,6 +4,21 @@
  *  in order for Velocity to find it.
  *#
 
+#macro(resval $colname $value)
+    <div class="col-md-1">
+        <div class="row">
+            <div class="col-md-12">
+                $colname
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                $value
+            </div>
+        </div>
+    </div>
+#end
+
 #macro(param $key)$request.params.get($key)#end
 
 #macro(url_root)/solr#end

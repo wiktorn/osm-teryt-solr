@@ -2,27 +2,16 @@
  *  Renders the main query form
  *#
 
-<div class="query-box">
+<div class="query-box col-md-12">
   <form id="query-form" action="#{url_for_home}" method="GET">
 
-    <div class="inputs">
+    <div class="inputs form-group">
       <span #annTitle("Add the query using the &q= parameter")>
         Find:
-        <input type="text" id="q" name="q" value="$!esc.html($params.get('q'))"/>
-        <input type="submit" id="querySubmit"/>
-        <input type="reset"/>
+        <input class="form-control" type="text" id="q" name="q" value="$!esc.html($params.get('q'))"/>
+        <input class="btn btn-primary" type="submit" id="querySubmit"/>
+        <input class="btn btn-default"type="reset"/>
       </span>
-      <div class="query-boost">
-        <span #annTitle("Add the boost function &bf=price to the query")>
-          <input type="checkbox" name="bf" value="price"
-            #if($request.params.get('bf') == 'price')checked="true"#end
-          >
-            Boost by Price
-          </input>
-        </span>
-      #parse("query_spatial.vm")
-      #parse("query_group.vm")
-      </div>
   </div>
 
     #if($request.params.get('debugQuery'))
