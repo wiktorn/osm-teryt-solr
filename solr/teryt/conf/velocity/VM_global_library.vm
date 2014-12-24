@@ -18,6 +18,9 @@
         </div>
     </div>
 #end
+#macro(link_for_id $doc)
+    <a href="?q=parent:$doc.getFieldValue('id')">$doc.getFieldValue('value')</a>
+#end
 
 #macro(param $key)$request.params.get($key)#end
 

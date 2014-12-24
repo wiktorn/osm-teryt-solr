@@ -8,12 +8,12 @@
 ## usually within <div class="row">
 <div class="result-document">
 #if($doc.getFieldValue('typ') == 'terc')
-    #resval('Nazwa', '<a href="?q=parent:' + $doc.getFieldValue('id') + '">' + $doc.getFieldValue('value') + '</a>')
+    #resval('Nazwa', #link_for_id($doc))
     #resval('TERC', $doc.getFieldValue('terc'))
     #resval('Rodzaj', $doc.getFieldValue('rodzaj'))
     ## TODO:linki
 #elseif ($doc.getFieldValue('typ') == 'simc')
-    #resval('Nazwa', '<a href="?q=parent:' + $doc.getFieldValue('id') + '">' + $doc.getFieldValue('value') +'</a>')
+    #resval('Nazwa', #link_for_id($doc))
     #resval('Rodzaj', $doc.getFieldValue('rodzaj'))
     #resval('Województwo', $doc.getFieldValue('wojewodztwo'))
     #resval('Powiat', $doc.getFieldValue('powiat'))
