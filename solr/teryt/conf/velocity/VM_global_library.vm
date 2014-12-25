@@ -7,7 +7,7 @@
 #macro(resval $colname)
     <td>
         <table class="table">
-            #if ($colname)
+            #if ($colname && $colname != "")
                 <thead>
                     <tr>
                         <th>
