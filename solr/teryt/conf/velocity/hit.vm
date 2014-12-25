@@ -27,9 +27,11 @@
     #@resval("Nazwa ulicy")$doc.getFieldValue('value')#end
     #@resval("SYMUL")$doc.getFieldValue('symul')#end
     #@resval("Miasta")
-        #foreach($item in $doc.getFieldValue('parent'))
-            <a href="?q=id:$item&sort=$esc.url('typ asc, value asc')&rows=30">$doc.getFieldValue('miejscowosc')[$foreach.index]</a><br>
-        #end
+        <div class="accordion">
+            #foreach($item in $doc.getFieldValue('parent'))
+                <a href="?q=id:$item&sort=$esc.url('typ asc, value asc')&rows=30">$doc.getFieldValue('miejscowosc')[$foreach.index]</a><br>
+            #end
+        </div>
     #end
     </tr>
 #else
