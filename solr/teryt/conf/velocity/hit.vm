@@ -28,22 +28,21 @@
     #@resval("SYMUL")$doc.getFieldValue('symul')#end
     #@resval("Miasta")
         #if ($doc.getFieldValue('parent').size() > 3)
-            <div class="accordion">
-                <h3>
+            <div class="panel panel-default">
+                <h4 class="panel-title">Rozwiń</h4>
+                <div class="panel-collapse collapse" aria-expanded="false" role="tabpanel">
                     #foreach($item in $doc.getFieldValue('parent'))
-                        #if ($foreach.index == 3)
-                            </h3>
-                            <div>
-                        #end
                         <a href="?q=id:$item&sort=$esc.url('typ asc, value asc')&rows=30">$doc.getFieldValue('miejscowosc')[$foreach.index]</a><br>
                     #end
+                </div>
+            </div>
         #else
             <div>
             #foreach($item in $doc.getFieldValue('parent'))
                 <a href="?q=id:$item&sort=$esc.url('typ asc, value asc')&rows=30">$doc.getFieldValue('miejscowosc')[$foreach.index]</a><br>
             #end
+            </div>
         #end
-        </div>
     #end
     </tr>
 #else
