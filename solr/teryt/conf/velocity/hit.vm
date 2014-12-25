@@ -8,20 +8,20 @@
 ## usually within <div class="row">
 <div class="result-document">
 #if($doc.getFieldValue('typ') == 'terc')
-    #resval('Nazwa', #link_for_id($doc))
-    #resval('TERC', $doc.getFieldValue('terc'))
-    #resval('Rodzaj', $doc.getFieldValue('rodzaj'))
+    #@resval('Nazwa')#link_for_id($doc)#end
+    #@resval('TERC')$doc.getFieldValue('terc')#end
+    #@resval('Rodzaj)$doc.getFieldValue('rodzaj')#end
     ## TODO:linki
 #elseif ($doc.getFieldValue('typ') == 'simc')
-    #resval('Nazwa', #link_for_id($doc))
-    #resval('Rodzaj', $doc.getFieldValue('rodzaj'))
-    #resval('Województwo', $doc.getFieldValue('wojewodztwo'))
-    #resval('Powiat', $doc.getFieldValue('powiat'))
-    #resval('Gmina', $doc.getFieldValue('gmina'))
+    #@resval('Nazwa')#link_for_id($doc)#end
+    #@resval('Rodzaj')$doc.getFieldValue('rodzaj')#end
+    #@resval('Województwo')$doc.getFieldValue('wojewodztwo')#end
+    #@resval('Powiat')$doc.getFieldValue('powiat')#end
+    #@resval('Gmina')$doc.getFieldValue('gmina')#end
 
 #elseif ($doc.getFieldValue('typ') == 'ulic')
-    #resval('Nazwa ulicy', $doc.getFieldValue('value'))
-    ##resval('SYMUL', $doc.getFieldValue('symul'))
+    #@resval('Nazwa ulicy')$doc.getFieldValue('value')#end
+    #@resval('SYMUL')$doc.getFieldValue('symul')#end
     ## TODO:linki
 #else
     Unkown typ: $doc.getFieldValue('typ')
