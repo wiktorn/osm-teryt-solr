@@ -25,7 +25,7 @@
     #@resval("SYMUL")$doc.getFieldValue('symul')#end
     #@resval("Miasta")
         #foreach($item in $doc.getFieldValue('parent'))
-            <a href="?q=id:$item&sort=$esc.url('typ asc, value asc')&rows=30">$doc.getFieldValue('miejscowosc')[$foreach.count]</a><br>
+            <a href="?q=id:$item&sort=$esc.url('typ asc, value asc')&rows=30">$doc.getFieldValue('miejscowosc')[$foreach.index]</a><br>
         #end
     #end
     ## TODO:linki
