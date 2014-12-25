@@ -11,17 +11,23 @@
     #@resval("Nazwa")#link_for_id($doc)#end
     #@resval("TERC")$doc.getFieldValue('terc')#end
     #@resval("Rodzaj")$doc.getFieldValue('rodzaj')#end
-    #link_for_up($doc)#end
+    #@resval("")#link_for_up($doc)#end
 #elseif ($doc.getFieldValue('typ') == 'simc')
     #@resval("Nazwa")#link_for_id($doc)#end
     #@resval("Rodzaj")$doc.getFieldValue('rodzaj')#end
     #@resval("Województwo")$doc.getFieldValue('wojewodztwo')#end
     #@resval("Powiat")$doc.getFieldValue('powiat')#end
     #@resval("Gmina")$doc.getFieldValue('gmina')#end
+    #@resval("")#link_for_up($doc)#end
 
 #elseif ($doc.getFieldValue('typ') == 'ulic')
     #@resval("Nazwa ulicy")$doc.getFieldValue('value')#end
     #@resval("SYMUL")$doc.getFieldValue('symul')#end
+    #@resval("Miasta")
+        #foreach($item in $doc.getFieldValue('parent'))
+            <a href="?q=id:$item&sort=$esc.url('typ asc, value asc')&rows=30">$doc.getFieldValue('miejscowosc')[$foreach.count]</a><br>
+        #end
+    #end
     ## TODO:linki
 #else
     Unkown typ: $doc.getFieldValue('typ')
