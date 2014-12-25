@@ -27,7 +27,7 @@
     #@resval("Nazwa ulicy")$doc.getFieldValue('value')#end
     #@resval("SYMUL")$doc.getFieldValue('symul')#end
     #@resval("Miasta")
-        #if ($doc.getFieldValue('parent').length > 3)
+        #if ($doc.getFieldValue('parent').size() > 3)
             <div class="accordion">
                 <h3>
                     #foreach($item in $doc.getFieldValue('parent'))
