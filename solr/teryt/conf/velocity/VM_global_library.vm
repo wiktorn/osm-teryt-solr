@@ -6,7 +6,7 @@
 
 #macro(resval $colname)
     <td>
-        <table>
+        <table class="table">
             <thead>
                 <tr>
                     <td>
