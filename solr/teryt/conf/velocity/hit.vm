@@ -30,7 +30,7 @@
         #if ($doc.getFieldValue('parent').size() > 3)
             <div class="panel panel-default mycollapse">
                 <h4 class="panel-title">Rozwiń</h4>
-                <div class="panel-collapse collapse" aria-expanded="false" role="tabpanel">
+                <div class="panel-collapse collapse" aria-expanded="false" role="tabpanel" data-toggle="collapse">
                     #foreach($item in $doc.getFieldValue('parent'))
                         <a href="?q=id:$item&sort=$esc.url('typ asc, value asc')&rows=30">$doc.getFieldValue('miejscowosc')[$foreach.index]</a><br>
                     #end
