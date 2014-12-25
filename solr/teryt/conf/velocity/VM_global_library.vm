@@ -5,18 +5,24 @@
  *#
 
 #macro(resval $colname)
-    <div class="col-md-2">
-        <div class="row">
-            <div class="col-md-12">
-                <span>$colname</span>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <span>$!bodyContent</span>
-            </div>
-        </div>
-    </div>
+    <td>
+        <table>
+            <thead>
+                <tr>
+                    <td>
+                        <span>$colname</span>
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <span>$!bodyContent</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </td>
 #end
 #macro(link_for_id $doc)
     <a href="?q=parent:$doc.getFieldValue('id')&sort=$esc.url('typ asc, value asc')&rows=30">$doc.getFieldValue('value')</a>

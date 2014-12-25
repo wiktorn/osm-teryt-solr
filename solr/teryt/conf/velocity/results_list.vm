@@ -4,11 +4,10 @@
 
 ## Usually displayed inside <div class="results">
 
+<table class="table table-striped table-hover">
+<tbody>
 #foreach($doc in $response.results)
-  <div class="row">
   #parse("hit.vm")
-  ## Can get an extremely simple view of the doc
-  ## which might be nicer for debugging
-  ##parse("hit_plain.vm")
-  </div class="row">
 #end
+</tbody>
+</table>
