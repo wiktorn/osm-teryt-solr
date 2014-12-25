@@ -5,7 +5,11 @@
  *#
 
 #macro(resval $colname)
-    <td>
+    #if ($colname && $colname != "")
+        <td>
+    #else
+        <td style="vertical-align: middle;">
+    #end
         <table class="table">
             #if ($colname && $colname != "")
                 <thead>
@@ -15,22 +19,14 @@
                         </th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            <span>$!bodyContent</span>
-                        </td>
-                    </tr>
-                </tbody>
-            #else
-                <tbody>
-                    <tr>
-                        <td>
-                            <span>$!bodyContent</span>
-                        </td>
-                    </tr>
-                </tbody>
             #end
+            <tbody>
+                <tr>
+                    <td>
+                        <span>$!bodyContent</span>
+                    </td>
+                </tr>
+            </tbody>
         </table>
     </td>
 #end
