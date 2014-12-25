@@ -11,7 +11,7 @@
     #@resval("Nazwa")#link_for_id($doc)#end
     #@resval("TERC")$doc.getFieldValue('terc')#end
     #@resval("Rodzaj")$doc.getFieldValue('rodzaj')#end
-    ## TODO:linki
+    #link_for_up($doc)#end
 #elseif ($doc.getFieldValue('typ') == 'simc')
     #@resval("Nazwa")#link_for_id($doc)#end
     #@resval("Rodzaj")$doc.getFieldValue('rodzaj')#end
