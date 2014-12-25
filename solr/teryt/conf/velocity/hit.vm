@@ -28,7 +28,7 @@
     #@resval("SYMUL")$doc.getFieldValue('symul')#end
     #@resval("Miasta")
         #if ($doc.getFieldValue('parent').size() > 3)
-            <div class="panel panel-default">
+            <div class="panel panel-default mycollapse">
                 <h4 class="panel-title">Rozwiń</h4>
                 <div class="panel-collapse collapse" aria-expanded="false" role="tabpanel">
                     #foreach($item in $doc.getFieldValue('parent'))
