@@ -964,6 +964,8 @@
        <str name="echoParams">explicit</str>
 
        <!-- VelocityResponseWriter settings -->
+       <str name="v.properties">velocity.properties</str>
+       <str name="v.contentType">text/html;charset=UTF-8</str>
        <str name="wt">velocity</str>
        <str name="v.template">browse</str>
        <str name="v.layout">layout</str>
