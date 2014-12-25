@@ -7,20 +7,30 @@
 #macro(resval $colname)
     <td>
         <table class="table">
-            <thead>
-                <tr>
-                    <td>
-                        <span>$colname</span>
-                    </td>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        <span>$!bodyContent</span>
-                    </td>
-                </tr>
-            </tbody>
+            #if ($colname)
+                <thead>
+                    <tr>
+                        <th>
+                            <span>$colname</span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <span>$!bodyContent</span>
+                        </td>
+                    </tr>
+                </tbody>
+            #else
+                <tbody>
+                    <tr>
+                        <td>
+                            <span>$!bodyContent</span>
+                        </td>
+                    </tr>
+                </tbody>
+            #end
         </table>
     </td>
 #end
