@@ -1,7 +1,5 @@
 #**
- *  Called for each matching document but then
- *  calls one of product_doc, join_doc or richtext_doc
- *  depending on which fields the doc has
+ *  Called for each matching document
  *#
 
 #set($docId = $doc.getFieldValue('id'))
