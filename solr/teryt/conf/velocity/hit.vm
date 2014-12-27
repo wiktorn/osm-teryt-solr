@@ -33,7 +33,7 @@
                     <div class="panel-heading">
                         <h4 class="panel-title">
                             <a class="accordion-toggle" href="#collapse$foreach.index" data-toggle="collapse" data-parent="#accordion$foreach.index">
-                                Rozwiń <span class="badge">$doc.getFieldValue('parent').size()</span>
+                                Rozwiń <span class="text-right"><span class="badge">$doc.getFieldValue('parent').size()</span></span>
                             </a>
                         </h4>
                         <div class="panel-collapse collapse" aria-expanded="false" role="tabpanel" id="collapse$foreach.index">
