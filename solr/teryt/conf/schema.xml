@@ -432,6 +432,7 @@
             <tokenizer class="solr.WhitespaceTokenizerFactory"/>
             <filter class="solr.LowerCaseFilterFactory"/>
             <filter class="solr.MorfologikFilterFactory" dictionary="MORFOLOGIK" />
+            <filter class="solr.EdgeNGramFilterFactory" minGramSize="2" maxGramSize="15" side="front" />
         </analyzer>
     </fieldType>
 
