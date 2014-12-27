@@ -5,14 +5,14 @@
 <div class="query-box col-md-12">
   <form id="query-form" action="?" method="GET">
 
-    <div class="inputs form-group">
-      <span #annTitle("Add the query using the &q= parameter")>
+    <div class="form-group">
         Find:
         <input class="form-control" type="text" id="q" name="q" value="$!esc.html($params.get('q'))"/>
+    </div>
+    <div class="form-group">
         <input class="btn btn-primary" type="submit" id="querySubmit"/>
         <input class="btn btn-default"type="reset"/>
-      </span>
-  </div>
+    </div>
 
     #foreach($fq in $request.params.getParams('fq'))
       #if ($fq != "{!bbox}")
