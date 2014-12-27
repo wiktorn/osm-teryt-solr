@@ -10,7 +10,7 @@
         <input class="form-control" type="text" id="q" name="q" value="$!esc.html($params.get('q'))"/>
     </div>
     <div class="form-group">
-        <input class="btn btn-primary" type="submit" id="querySubmit" onclick="if(document.getElementById('q').indexOf(' ') > 0) document.getElementById('sort').value=''; return true;"/>
+        <input class="btn btn-primary" type="submit" id="querySubmit" />
         <input class="btn btn-default" type="reset"/>
     </div>
 
@@ -23,7 +23,7 @@
     #if ($sort && $sort != '')
         <input type="hidden" name="sort" value="$esc.html($sort)" id="sort" />
     #else
-        <input type="hidden" name="sort" value="typ asc, value asc" id="sort" />
+        <input type="hidden" name="sort" value="typ asc, score desc, value asc" id="sort" />
     #end    
     #set($rows = $request.params.get("rows"))
     #if ($sort && $sort != '')
