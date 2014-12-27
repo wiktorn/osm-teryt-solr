@@ -166,7 +166,9 @@
    <copyField source="id" dest="text"/>
    <copyField source="terc" dest="text"/>
    <copyField source="symul" dest="text"/>
-   <copyField source="parent" dest="text"/>
+   <copyField source="wojewodztwo" dest="text"/>
+   <copyField source="powiat" dest="text"/>
+   <copyField source="gmina" dest="text"/>
 
     <!-- The StrField type is not analyzed, but indexed/stored verbatim.
        It supports doc values but in that case the field needs to be
