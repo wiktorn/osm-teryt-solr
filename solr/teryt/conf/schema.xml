@@ -122,10 +122,11 @@
         
    <field name="parent" type="string" indexed="true" stored="true" omitNorms="true" multiValued="true" />
    <field name="terc" type="string" indexed="true" stored="true" omitNorms="true" multiValued="false"/>
+   <field name="symul" type="string" indexed="true" stored="true" omitNorms="true"/>
+   <field name="simc" type="string" indexed="true" stored="true" omitNorms="true"/>
    <field name="rodzaj" type="string" indexed="true" stored="true" omitNorms="true"/>
    <field name="value" type="text_general" indexed="true" stored="true" omitNorms="true" required="true" multiValued="false"/>
    <field name="cecha" type="string" indexed="true" stored="true" omitNorms="true"/>
-   <field name="symul" type="string" indexed="true" stored="true" omitNorms="true"/>
    <field name="wojewodztwo" type="string" indexed="true" stored="true" omitNorms="true"/>
    <field name="powiat" type="string" indexed="true" stored="true" omitNorms="true"/>
    <field name="gmina" type="string" indexed="true" stored="true" omitNorms="true"/>
