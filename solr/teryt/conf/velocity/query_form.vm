@@ -3,7 +3,7 @@
  *#
 
 <div class="query-box col-md-12">
-  <form id="query-form" action="#{url_for_home}" method="GET">
+  <form id="query-form" action="?" method="GET">
 
     <div class="inputs form-group">
       <span #annTitle("Add the query using the &q= parameter")>
