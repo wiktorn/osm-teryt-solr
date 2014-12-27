@@ -56,15 +56,14 @@
 
 #macro(spatial)#if($request.params.get('sfield'))&sfield=store#end#if($request.params.get('pt'))&pt=$request.params.get('pt')#end#if($request.params.get('d'))&d=$request.params.get('d')#end#end
 
-#macro(qOpts)#set($queryOpts = $request.params.get("queryOpts"))#if($queryOpts && $queryOpts != "")&queryOpts=$queryOpts#end#end
+#macro(url_for_start $start)#url_for_home#lens&start=$start#end
 
+#macro(url_for_filters $p)#url_for_home#lens#if($list.size($p) > 0)&#fqs($p)#end#end
 
-#macro(url_for_start $start)#url_for_home?#q&start=$start#end
-
-#macro(url_for_filters $p)#url_for_home?#q#boostPrice#spatial#qOpts#if($list.size($p) > 0)&#fqs($p)#end#debug#end
+#macro(lens)#?#q&sort=$!{esc.url($params.get('sort'))}&rows=$!{esc.url($params.get('rows'))}#end
 
 ## TODO: convert to use {!raw f=$field}$value (with escaping of course)
-#macro(url_for_facet_filter $field $value)#url_for_home?#q&fq=#if($value!=$null)$esc.url($field):%22$esc.url($value)%22#else-$esc.url($field):[*+TO+*]#end#end
+#macro(url_for_facet_filter $field $value)#url_for_home#lens&fq=#if($value!=$null)$esc.url($field):%22$esc.url($value)%22#else-$esc.url($field):[*+TO+*]#end#end
 
 #macro(link_to_previous_page $text)
   #if($page.current_page_number > 1)
