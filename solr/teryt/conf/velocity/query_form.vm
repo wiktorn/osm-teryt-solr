@@ -19,14 +19,14 @@
         <input type="hidden" name="fq" id="allFQs" value="$esc.html($fq)"/>
       #end
     #end
-    #set($sort = $request.params.get("sort"))
-    #if ($sort && $sort != '')
-        <input type="hidden" name="sort" value="$esc.html($sort)" id="sort" />
+    #set($srt = $request.params.get("sort"))
+    #if ($srt && $srt != '')
+        <input type="hidden" name="sort" value="$esc.html($srt)" id="sort" />
     #else
         <input type="hidden" name="sort" value="typ asc, score desc, value asc" id="sort" />
     #end    
     #set($rows = $request.params.get("rows"))
-    #if ($sort && $sort != '')
+    #if ($rows && $rows != '')
         <input type="hidden" name="rows" value="$esc.html($rows)" />
     #else
         <input type="hidden" name="rows" value="30" />
