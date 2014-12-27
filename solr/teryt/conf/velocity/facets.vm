@@ -4,4 +4,3 @@
  *#
 
 #parse('facet_fields.vm')
-#parse('facet_pivot.vm')
