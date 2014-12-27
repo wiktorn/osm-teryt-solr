@@ -15,6 +15,7 @@
     <tr class="success">
     #@resval("Nazwa")#link_for_id($doc)#end
     #@resval("Rodzaj")$doc.getFieldValue('rodzaj')#end
+    #@resval("SIMC")$doc.getFieldValue('simc')#end
     #@resval("Województwo")$doc.getFieldValue('wojewodztwo')#end
     #@resval("Powiat")$doc.getFieldValue('powiat')#end
     #@resval("Gmina")$doc.getFieldValue('gmina')#end
@@ -37,7 +38,7 @@
                         <div class="panel-collapse collapse" aria-expanded="false" role="tabpanel" id="collapse$foreach.index">
                             <div class="panel-body">
                                 #foreach($item in $doc.getFieldValue('parent'))
-                                    <a class="" href="?q=id:$item&sort=$esc.url('typ asc, score desc, value asc')&rows=30">$doc.getFieldValue('miejscowosc')[$foreach.index]</a><br>
+                                    <a class="" href="?q=id:$item&sort=$esc.url('typ asc, value asc')&rows=30">$doc.getFieldValue('miejscowosc')[$foreach.index]</a><br>
                                 #end
                             </div>
                         </div>
@@ -47,7 +48,7 @@
         #else
             <div>
             #foreach($item in $doc.getFieldValue('parent'))
-                <a class="" href="?q=id:$item&sort=$esc.url('typ asc, score desc, value asc')&rows=30">$doc.getFieldValue('miejscowosc')[$foreach.index]</a><br>
+                <a class="" href="?q=id:$item&sort=$esc.url('typ asc, value asc')&rows=30">$doc.getFieldValue('miejscowosc')[$foreach.index]</a><br>
             #end
             </div>
         #end
