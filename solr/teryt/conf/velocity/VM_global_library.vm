@@ -43,7 +43,7 @@
 
 ## TODO: s/url_for_solr/url_for_core/ and s/url_root/url_for_solr/
 #macro(url_for_solr)#{url_root}#if($request.core.name != "")/$request.core.name#end#end
-#macro(url_for_home)#browse#end
+#macro(url_for_home)browse#end
 
 #macro(q)&q=$!{esc.url($params.get('q'))}#end
 
@@ -59,12 +59,12 @@
 #macro(qOpts)#set($queryOpts = $request.params.get("queryOpts"))#if($queryOpts && $queryOpts != "")&queryOpts=$queryOpts#end#end
 
 
-#macro(url_for_start $start)#url_for_home#lens&start=$start#end
+#macro(url_for_start $start)#url_for_home&start=$start#end
 
 #macro(url_for_filters $p)#url_for_home?#q#boostPrice#spatial#qOpts#if($list.size($p) > 0)&#fqs($p)#end#debug#end
 
 ## TODO: convert to use {!raw f=$field}$value (with escaping of course)
-#macro(url_for_facet_filter $field $value)#url_for_home#lens&fq=#if($value!=$null)$esc.url($field):%22$esc.url($value)%22#else-$esc.url($field):[*+TO+*]#end#end
+#macro(url_for_facet_filter $field $value)#url_for_home&fq=#if($value!=$null)$esc.url($field):%22$esc.url($value)%22#else-$esc.url($field):[*+TO+*]#end#end
 
 #macro(link_to_previous_page $text)
   #if($page.current_page_number > 1)
