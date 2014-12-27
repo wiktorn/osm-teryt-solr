@@ -10,8 +10,8 @@
         <input class="form-control" type="text" id="q" name="q" value="$!esc.html($params.get('q'))"/>
     </div>
     <div class="form-group">
-        <input class="btn btn-primary" type="submit" id="querySubmit"/>
-        <input class="btn btn-default"type="reset"/>
+        <input class="btn btn-primary" type="submit" id="querySubmit" onclick="if(document.getElementById('q').indexOf(' ') > 0) document.getElementById('sort').value=''; return true;"/>
+        <input class="btn btn-default" type="reset"/>
     </div>
 
     #foreach($fq in $request.params.getParams('fq'))
@@ -21,9 +21,9 @@
     #end
     #set($sort = $request.params.get("sort"))
     #if ($sort && $sort != '')
-        <input type="hidden" name="sort" value="$esc.html($sort)" />
+        <input type="hidden" name="sort" value="$esc.html($sort)" id="sort" />
     #else
-        <input type="hidden" name="sort" value="typ asc, value asc" />
+        <input type="hidden" name="sort" value="typ asc, value asc" id="sort" />
     #end    
     #set($rows = $request.params.get("rows"))
     #if ($sort && $sort != '')
