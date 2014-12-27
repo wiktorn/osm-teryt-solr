@@ -28,18 +28,28 @@
     #@resval("SYMUL")$doc.getFieldValue('symul')#end
     #@resval("Miasta")
         #if ($doc.getFieldValue('parent').size() > 3)
-            <div class="panel panel-default mycollapse">
-                <h4 class="panel-title">Rozwiń</h4>
-                <div class="panel-collapse collapse" aria-expanded="false" role="tabpanel" data-toggle="collapse">
-                    #foreach($item in $doc.getFieldValue('parent'))
-                        <a href="?q=id:$item&sort=$esc.url('typ asc, value asc')&rows=30">$doc.getFieldValue('miejscowosc')[$foreach.index]</a><br>
-                    #end
+            <div class="panel-group" id="accordion$foreach.index">
+                <div class="panel panel-default mycollapse">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a class="accordion-toggle" href="#collapse$foreach.index" data-toggle="collapse" data-parent="#accordion$foreach.index">
+                                Rozwiń <span class="badge">$doc.getFieldValue('parent').size()</span>
+                            </a>
+                        </h4>
+                        <div class="panel-collapse collapse" aria-expanded="false" role="tabpanel" id="collapse$foreach.index">
+                            <div class="panel-body"
+                                #foreach($item in $doc.getFieldValue('parent'))
+                                    <a class="list-group-item" href="?q=id:$item&sort=$esc.url('typ asc, value asc')&rows=30">$doc.getFieldValue('miejscowosc')[$foreach.index]</a><br>
+                                #end
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         #else
             <div>
             #foreach($item in $doc.getFieldValue('parent'))
-                <a href="?q=id:$item&sort=$esc.url('typ asc, value asc')&rows=30">$doc.getFieldValue('miejscowosc')[$foreach.index]</a><br>
+                <a class="list-group-item" href="?q=id:$item&sort=$esc.url('typ asc, value asc')&rows=30">$doc.getFieldValue('miejscowosc')[$foreach.index]</a><br>
             #end
             </div>
         #end
