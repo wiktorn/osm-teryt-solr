@@ -60,7 +60,8 @@
 
 #macro(url_for_filters $p)#url_for_home#lens#if($list.size($p) > 0)&#fqs($p)#end#end
 
-#macro(lens)#?#q&sort=$!{esc.url($params.get('sort'))}&rows=$!{esc.url($params.get('rows'))}#end
+#macro(lensNoQ)#&sort=$!{esc.url($params.get('sort'))}&rows=$!{esc.url($params.get('rows'))}#end
+#macro(lens)#?#q&#lensNoQ#end
 
 ## TODO: convert to use {!raw f=$field}$value (with escaping of course)
 #macro(url_for_facet_filter $field $value)#url_for_home#lens&fq=#if($value!=$null)$esc.url($field):%22$esc.url($value)%22#else-$esc.url($field):[*+TO+*]#end#end
