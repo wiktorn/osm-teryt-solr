@@ -37,7 +37,7 @@
                             </a>
                         </h4>
                         <div class="panel-collapse collapse" aria-expanded="false" role="tabpanel" id="collapse$foreach.index">
-                            <div class="panel-body"
+                            <div class="panel-body">
                                 #foreach($item in $doc.getFieldValue('parent'))
                                     <a class="" href="?q=id:$item&sort=$esc.url('typ asc, value asc')&rows=30">$doc.getFieldValue('miejscowosc')[$foreach.index]</a><br>
                                 #end
