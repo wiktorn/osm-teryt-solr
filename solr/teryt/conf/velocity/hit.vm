@@ -16,7 +16,7 @@
     #@resval("Nazwa")#link_for_id($doc)#end
     #@resval("Rodzaj")$doc.getFieldValue('rodzaj')#end
     #@resval("SIMC")$doc.getFieldValue('simc')#end
-    #@resval("Województwo")$doc.getFieldValue('wojewodztwo')#end
+    #@resval("Wojew&oacute;dztwo")$doc.getFieldValue('wojewodztwo')#end
     #@resval("Powiat")$doc.getFieldValue('powiat')#end
     #@resval("Gmina")$doc.getFieldValue('gmina')#end
     #@resval("")#link_for_up($doc)#end

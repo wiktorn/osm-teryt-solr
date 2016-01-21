@@ -10,6 +10,15 @@ From https://github.com/morfologik/morfologik-stemming build:
 
 and add them to classpath (/usr/local/share/java/classes/)
 
+Download Apache Velocity (https://velocity.apache.org/download.cgi):
+* engine
+* tools
+
+And copy:
+* velocity-1.7.jar
+* velocity-tools-2.0.jar
+To: /usr/local/share/java/classes/
+
 From push-teryt-to-solr run:
 python3.4 fetch.py
 sh push.sh

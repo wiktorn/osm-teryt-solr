@@ -34,7 +34,7 @@
     <a href="?q=parent:$doc.getFieldValue('id')&sort=$esc.url('typ asc, score desc, value asc')&rows=30">$doc.getFieldValue('value')</a>
 #end
 #macro(link_for_up $doc)
-    <a href="?q=id:$doc.getFieldValue('parent')[0]&sort=$esc.url('typ asc, score desc, value asc')&rows=30">Przejdź wyżej</a>
+    <a href="?q=id:$doc.getFieldValue('parent')[0]&sort=$esc.url('typ asc, score desc, value asc')&rows=30">Przejd&zacute; wy&zdot;ej</a>
 #end
 
 #macro(param $key)$request.params.get($key)#end
