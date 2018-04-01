@@ -20,7 +20,11 @@ And copy:
 To: /usr/local/share/java/classes/
 
 From push-teryt-to-solr run:
-python3.4 fetch.py
+python3.6 -m venv venv
+venv/bin/pip install -r requirements.txt
+git submodule init
+git submodule update --remote
+python3.6 fetch.py
 sh push.sh
 
 (check for valid hostname in upload.sh)
