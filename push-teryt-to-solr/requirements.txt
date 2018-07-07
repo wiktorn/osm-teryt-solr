@@ -1,0 +1,5 @@
+lxml
+tqdm
+zeep
+requests
+protobuf
