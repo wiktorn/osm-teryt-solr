@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 from urllib.request import urlopen
 from bs4 import BeautifulSoup
 from collections import namedtuple
@@ -5,7 +7,6 @@ import io
 import json
 import lxml.etree
 import zipfile
-from utils import groupby
 
 # TODO - add names to TERC dictionary
 
@@ -37,6 +38,18 @@ from utils import groupby
 #   - id = symul
 #   - sim = lista [simc]
 #   - nazwa
+
+def groupby(lst, keyfunc=lambda x: x, valuefunc=lambda x: x):
+    ret = {}
+    for i in lst:
+        key = keyfunc(i)
+        try:
+            entry = ret[key]
+        except KeyError:
+            entry = []
+            ret[key] = entry
+        entry.append(valuefunc(i))
+    return ret
 
 
 def terc_key(dct):
