@@ -1,4 +1,7 @@
 steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['network', 'create', 'cloudbuild-net']
+
   - name: 'gcr.io/cloud-builders/git'
     args: ['submodule', 'update', '--remote', '--init']
 
@@ -14,12 +17,11 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: ['run',  '--name',  'my_solr', '-d', '-p', '8983:8983', '-t', 'osm-teryt-solr']
 
-  - name: 'ubuntu'
-    args: ['sleep', '5']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['exec',  'my_solr', 'wait-for-solr.sh']
 
-  - name: 'gcr.io/cloud-builders/curl'
-    args: ['http://osm-teryt-solr:8983/solr/teryt/update?commit=true', '--data-binary', '@push-teryt-to-solr/terc.json',
-           '-H', 'Content-type:application/json']
+  - name: 'gcr.io/osm-vink/clean-docker-builder'
+    args: ['/bin/sh', '-c' , 'cat push-teryt-to-solr/terc.json | docker exec -t my_solr post -c teryt -t application/json -d']
 
   - name: 'gcr.io/cloud-builders/docker'
     args: ['stop', 'my_solr']
@@ -28,10 +30,21 @@ steps:
     args: ['cp', 'security.json', 'my_solr:/opt/mysolrhome']
 
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['commit', 'my_solr', 'gcr.io/vink-osm/osm-teryt-solr']
+    args: ['commit', 'my_solr', 'gcr.io/osm-vink/osm-teryt-solr:latest']
 
   - name: 'gcr.io/cloud-builders/docker'
     args: ['rm', 'my_solr']
 
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/osm-vink/osm-teryt-solr:latest']
 
-images: ['gcr.io/vink-osm/osm-teryt-solr']
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args: ['beta', 'run', 'deploy', 'osm-teryt-solr',
+           '--image=gcr.io/osm-vink/osm-teryt-solr',
+           '--region=us-central1',
+           '--memory=256Mi',
+           '--allow-unauthenticated',
+           '--set-env-vars=LOG4J_PROPS=$$DEFAULT_SERVER_DIR/resources/log4j2-console.xml'
+    ]
+
+images: ['gcr.io/osm-vink/osm-teryt-solr:latest']
