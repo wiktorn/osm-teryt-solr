@@ -3,6 +3,7 @@
 set -e
 
 VERSION=`date '+%Y.%m.%d'`
+GCR_HOST="gcr.io"
 
 rm -rf target
 mvn dependency:copy-dependencies
@@ -33,6 +34,6 @@ docker cp security.json my_solr:/opt/mysolrhome
 docker commit my_solr osm-teryt-solr:${VERSION}
 docker rm my_solr
 gcloud auth configure-docker
-docker tag osm-teryt-solr:${VERSION} eu.gcr.io/osm-vink/osm-teryt-solr:${VERSION}
-docker push eu.gcr.io/osm-vink/osm-teryt-solr:${VERSION}
+docker tag osm-teryt-solr:${VERSION} ${GCR_HOST}/osm-vink/osm-teryt-solr:${VERSION}
+docker push ${GCR_HOST}/osm-vink/osm-teryt-solr:${VERSION}
 

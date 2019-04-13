@@ -73,21 +73,6 @@
        with their external dependencies.
     -->
     <lib dir="./lib" />
-  <lib dir="/usr/local/share/java/classes" regex="solr-cell-\d.*\.jar" />
-
-  <lib dir="/usr/local/share/java/classes" regex="solr-clustering-\d.*\.jar" />
-
-  <lib dir="/usr/local/share/java/classes" regex="solr-langid-\d.*\.jar" />
-
-  <lib dir="/usr/local/share/java/classes" regex="solr-velocity-\d.*\.jar" />
-
-  <lib dir="/usr/local/share/java/classes" regex="velocity-\d.*\.jar" />
-
-  <lib dir="/usr/local/share/java/classes" regex="velocity-tools-.*\.jar" />
-
-  <lib dir="/usr/local/share/java/classes" regex=".*morfologik.*\.jar" />
-
-  <lib dir="/usr/local/share/java/classes" regex="lucene-analyzers-common.*\.jar" />
 
   <!-- an exact 'path' can be used instead of a 'dir' to specify a 
        specific jar file.  This will cause a serious error to be logged 

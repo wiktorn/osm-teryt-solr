@@ -1,0 +1,37 @@
+steps:
+  - name: 'gcr.io/cloud-builders/git'
+    args: ['submodule', 'update', '--remote', '--init']
+
+  - name: 'ubuntu'
+    args: ['bash', './create_terc.json.sh']
+
+  - name: 'gcr.io/cloud-builders/mvn'
+    args: ['dependency:copy-dependencies']
+
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'osm-teryt-solr', '.']
+
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['run',  '--name',  'my_solr', '-d', '-p', '8983:8983', '-t', 'osm-teryt-solr']
+
+  - name: 'ubuntu'
+    args: ['sleep', '5']
+
+  - name: 'gcr.io/cloud-builders/curl'
+    args: ['http://osm-teryt-solr:8983/solr/teryt/update?commit=true', '--data-binary', '@push-teryt-to-solr/terc.json',
+           '-H', 'Content-type:application/json']
+
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['stop', 'my_solr']
+
+  - name:  'gcr.io/cloud-builders/docker'
+    args: ['cp', 'security.json', 'my_solr:/opt/mysolrhome']
+
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['commit', 'my_solr', 'gcr.io/vink-osm/osm-teryt-solr']
+
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['rm', 'my_solr']
+
+
+images: ['gcr.io/vink-osm/osm-teryt-solr']
