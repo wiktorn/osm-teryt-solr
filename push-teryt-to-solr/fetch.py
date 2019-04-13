@@ -1,5 +1,6 @@
 import itertools
 import json
+import tqdm
 
 from converters import teryt
 
@@ -16,7 +17,8 @@ def main():
     data = itertools.chain(teryt_data, simc_data, ulic_data, (('commit', {}),))
 
     # http://stackoverflow.com/questions/17991391/python-json-encode-with-same-keys-solr
-    output = '{%s}' % ',\n'.join(['"{}": {}'.format(action, json.dumps(dictionary)) for action, dictionary in data])
+    output = '{%s}' % ',\n'.join(['"{}": {}'.format(action, json.dumps(dictionary)) for action, dictionary in
+                                  tqdm.tqdm(data, total=(len(trt.keys()) + len(simc.keys()) + len(ulic.keys())))])
 
     with open('terc.json', 'w+') as f:
         f.write(output)

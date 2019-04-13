@@ -35,7 +35,7 @@
        that you fully re-index after changing this setting as it can
        affect both how text is indexed and queried.
   -->
-  <luceneMatchVersion>4.10.1</luceneMatchVersion>
+  <luceneMatchVersion>7.1</luceneMatchVersion>
 
   <!-- <lib/> directives can be used to instruct Solr to load any Jars
        identified and use them to resolve any "plugins" specified in
@@ -72,6 +72,7 @@
        The examples below can be used to load some solr-contribs along 
        with their external dependencies.
     -->
+    <lib dir="./lib" />
   <lib dir="/usr/local/share/java/classes" regex="solr-cell-\d.*\.jar" />
 
   <lib dir="/usr/local/share/java/classes" regex="solr-clustering-\d.*\.jar" />
@@ -338,7 +339,6 @@
         reduce the risk of propagating index corruption from older segments 
         into new ones, at the expense of slower merging.
     -->
-     <checkIntegrityAtMerge>false</checkIntegrityAtMerge>
   </indexConfig>
 
 
@@ -1157,32 +1157,6 @@
        Admin Handlers - This will register all the standard admin
        RequestHandlers.  
     -->
-  <requestHandler name="/admin/" 
-                  class="solr.admin.AdminHandlers" />
-  <!-- This single handler is equivalent to the following... -->
-  <!--
-     <requestHandler name="/admin/luke"       class="solr.admin.LukeRequestHandler" />
-     <requestHandler name="/admin/system"     class="solr.admin.SystemInfoHandler" />
-     <requestHandler name="/admin/plugins"    class="solr.admin.PluginInfoHandler" />
-     <requestHandler name="/admin/threads"    class="solr.admin.ThreadDumpHandler" />
-     <requestHandler name="/admin/properties" class="solr.admin.PropertiesRequestHandler" />
-     <requestHandler name="/admin/file"       class="solr.admin.ShowFileRequestHandler" >
-    -->
-  <!-- If you wish to hide files under ${solr.home}/conf, explicitly
-       register the ShowFileRequestHandler using the definition below. 
-       NOTE: The glob pattern ('*') is the only pattern supported at present, *.xml will
-             not exclude all files ending in '.xml'. Use it to exclude _all_ updates
-    -->
-  <!--
-     <requestHandler name="/admin/file" 
-                     class="solr.admin.ShowFileRequestHandler" >
-       <lst name="invariants">
-         <str name="hidden">synonyms.txt</str> 
-         <str name="hidden">anotherfile.txt</str> 
-         <str name="hidden">*</str> 
-       </lst>
-     </requestHandler>
-    -->
 
   <!-- ping/healthcheck -->
   <requestHandler name="/admin/ping" class="solr.PingRequestHandler">
@@ -1208,40 +1182,6 @@
     </lst>
   </requestHandler>
   
-  <!-- Solr Replication
-
-       The SolrReplicationHandler supports replicating indexes from a
-       "master" used for indexing and "slaves" used for queries.
-
-       http://wiki.apache.org/solr/SolrReplication 
-
-       It is also necessary for SolrCloud to function (in Cloud mode, the
-       replication handler is used to bulk transfer segments when nodes 
-       are added or need to recover).
-
-       https://wiki.apache.org/solr/SolrCloud/
-    -->
-  <requestHandler name="/replication" class="solr.ReplicationHandler" > 
-    <!--
-       To enable simple master/slave replication, uncomment one of the 
-       sections below, depending on whether this solr instance should be
-       the "master" or a "slave".  If this instance is a "slave" you will 
-       also need to fill in the masterUrl to point to a real machine.
-    -->
-    <!--
-       <lst name="master">
-         <str name="replicateAfter">commit</str>
-         <str name="replicateAfter">startup</str>
-         <str name="confFiles">schema.xml,stopwords.txt</str>
-       </lst>
-    -->
-    <!--
-       <lst name="slave">
-         <str name="masterUrl">http://your-master-hostname:8983/solr</str>
-         <str name="pollInterval">00:00:60</str>
-       </lst>
-    -->
-  </requestHandler>
 
   <!-- Search Components
 
