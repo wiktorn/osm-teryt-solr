@@ -42,9 +42,9 @@ steps:
     args: ['beta', 'run', 'deploy', 'osm-teryt-solr',
            '--image=gcr.io/osm-vink/osm-teryt-solr',
            '--region=us-central1',
-           '--memory=256Mi',
+           '--memory=512Mi',
            '--allow-unauthenticated',
-           '--set-env-vars=LOG4J_PROPS=/opt/solr/server/resources/log4j2-console.xml,SOLR_HEAP=250m'
+           '--set-env-vars=LOG4J_PROPS=/opt/solr/server/resources/log4j2-console.xml,SOLR_HEAP=400m'
     ]
 
 images: ['gcr.io/osm-vink/osm-teryt-solr:latest']
