@@ -1,5 +1,6 @@
 FROM solr:7-alpine
 
+COPY etc/jetty.xml /opt/solr/server/etc/jetty.xml
 COPY solr /opt/mysolrhome
 USER root
 RUN chown -R solr /opt/mysolrhome
