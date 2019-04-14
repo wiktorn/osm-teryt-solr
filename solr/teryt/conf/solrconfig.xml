@@ -72,8 +72,10 @@
        The examples below can be used to load some solr-contribs along 
        with their external dependencies.
     -->
+    <lib dir="/opt/solr/contrib/analysis-extras/lucene-libs" />
     <lib dir="/opt/solr/contrib/analysis-extras/lib" />
     <lib dir="/opt/solr/contrib/velocity/lib" />
+    <lib dir="/opt/solr/dist/" regex=".*velocity.*" />
 
 
   <!-- an exact 'path' can be used instead of a 'dir' to specify a 
