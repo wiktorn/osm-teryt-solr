@@ -5,11 +5,8 @@ steps:
   - name: 'gcr.io/cloud-builders/git'
     args: ['submodule', 'update', '--remote', '--init']
 
-  - name: 'ubuntu'
-    args: ['bash', './create_terc.json.sh']
-
-  - name: 'gcr.io/cloud-builders/mvn'
-    args: ['dependency:copy-dependencies']
+  - name: 'python:3-slim'
+    args: ['sh', './create_terc.json.sh']
 
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t', 'osm-teryt-solr', '.']
@@ -21,7 +18,10 @@ steps:
     args: ['exec',  'my_solr', 'wait-for-solr.sh']
 
   - name: 'gcr.io/osm-vink/clean-docker-builder'
-    args: ['/bin/sh', '-c' , 'cat push-teryt-to-solr/terc.json | docker exec -t my_solr post -c teryt -t application/json -d']
+    args: ['/bin/sh', '-c' , 'cat push-teryt-to-solr/terc.json | docker exec -i my_solr post -c teryt -type application/json -d']
+
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['logs', 'my_solr']
 
   - name: 'gcr.io/cloud-builders/docker'
     args: ['stop', 'my_solr']
@@ -44,7 +44,7 @@ steps:
            '--region=us-central1',
            '--memory=256Mi',
            '--allow-unauthenticated',
-           '--set-env-vars=LOG4J_PROPS=$$DEFAULT_SERVER_DIR/resources/log4j2-console.xml'
+           '--set-env-vars=LOG4J_PROPS=/opt/solr/server/resources/log4j2-console.xml,SOLR_HEAP=250m'
     ]
 
 images: ['gcr.io/osm-vink/osm-teryt-solr:latest']

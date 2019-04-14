@@ -3,9 +3,12 @@ import json
 import tqdm
 
 from converters import teryt
+from converters import tools
 
 
 def main():
+    tools.set_cache_manager(tools.MemoryCacheDriver())
+
     ulic = teryt.UlicCache().get_cache()
     simc = teryt.SimcCache().get_cache()
     trt = teryt.TerytCache().get_cache()

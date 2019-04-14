@@ -72,7 +72,9 @@
        The examples below can be used to load some solr-contribs along 
        with their external dependencies.
     -->
-    <lib dir="./lib" />
+    <lib dir="/opt/solr/contrib/analysis-extras/lib" />
+    <lib dir="/opt/solr/contrib/velocity/lib" />
+
 
   <!-- an exact 'path' can be used instead of a 'dir' to specify a 
        specific jar file.  This will cause a serious error to be logged 
