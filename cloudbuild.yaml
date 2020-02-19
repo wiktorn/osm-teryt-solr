@@ -39,9 +39,10 @@ steps:
     args: ['push', 'gcr.io/osm-vink/osm-teryt-solr:latest']
 
   - name: 'gcr.io/cloud-builders/gcloud'
-    args: ['beta', 'run', 'deploy', 'osm-teryt-solr',
+    args: ['run', 'deploy', 'osm-teryt-solr',
            '--image=gcr.io/osm-vink/osm-teryt-solr',
-           '--region=us-central1',
+           '--region=europe-north1',
+           '--platform=managed',
            '--memory=512Mi',
            '--allow-unauthenticated',
            '--set-env-vars=LOG4J_PROPS=/opt/solr/server/resources/log4j2-console.xml,SOLR_HEAP=400m'
